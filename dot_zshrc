@@ -121,10 +121,6 @@ if [[ -f $HOME/.zsh_constants ]]; then
   . $HOME/.zsh_constants
 fi
 
-if [[ -f $HOME/.zsh_work ]]; then
-  . $HOME/.zsh_work
-fi
-
 if [[ -f $HOME/.zsh_aliases ]]; then
   . $HOME/.zsh_aliases
 fi
@@ -135,6 +131,10 @@ fi
 
 if [[ -f $HOME/.zsh_completions ]]; then
   . $HOME/.zsh_completions
+fi
+
+if [[ -f $HOME/.zsh_work ]]; then
+  . $HOME/.zsh_work
 fi
 
 # NVM
