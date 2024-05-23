@@ -112,29 +112,34 @@ source ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+export ZSH_CUSTOMS_PATH="$HOME/.zsh_customs"
+if [[ ! -d "$HOME/.zsh_customs" ]]; then
+  export ZSH_CUSTOMS_PATH=$HOME
+fi
+
 # Env, Aliases and Functions
-if [[ -f $HOME/.zsh_env ]]; then
-  . $HOME/.zsh_env
+if [[ -f $ZSH_CUSTOMS_PATH/.zsh_env ]]; then
+  . $ZSH_CUSTOMS_PATH/.zsh_env
 fi
 
-if [[ -f $HOME/.zsh_constants ]]; then
-  . $HOME/.zsh_constants
+if [[ -f $ZSH_CUSTOMS_PATH/.zsh_constants ]]; then
+  . $ZSH_CUSTOMS_PATH/.zsh_constants
 fi
 
-if [[ -f $HOME/.zsh_aliases ]]; then
-  . $HOME/.zsh_aliases
+if [[ -f $ZSH_CUSTOMS_PATH/.zsh_aliases ]]; then
+  . $ZSH_CUSTOMS_PATH/.zsh_aliases
 fi
 
-if [[ -f $HOME/.zsh_functions ]]; then
-  . $HOME/.zsh_functions
+if [[ -f $ZSH_CUSTOMS_PATH/.zsh_functions ]]; then
+  . $ZSH_CUSTOMS_PATH/.zsh_functions
 fi
 
-if [[ -f $HOME/.zsh_completions ]]; then
-  . $HOME/.zsh_completions
+if [[ -f $ZSH_CUSTOMS_PATH/.zsh_completions ]]; then
+  . $ZSH_CUSTOMS_PATH/.zsh_completions
 fi
 
-if [[ -f $HOME/.zsh_work ]]; then
-  . $HOME/.zsh_work
+if [[ -f $ZSH_CUSTOMS_PATH/.zsh_work ]]; then
+  . $ZSH_CUSTOMS_PATH/.zsh_work
 fi
 
 # NVM
