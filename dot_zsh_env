@@ -1,0 +1,8 @@
+export DEV_HOME=$HOME/dev
+
+if [[ -x "$(command -v hx)" ]]; then
+  export EDITOR=hx
+else
+  export EDITOR=vim
+fi
+export VISUAL="EDITOR"

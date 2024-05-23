@@ -1,0 +1,12 @@
+### HELIX
+function hxf() {
+	hx $(fzf --exact --preview 'bat --style=numbers --color=always {}')
+}
+
+function cdd() {
+	if [[ -n "$DEV_HOME" ]]; then
+		cd $DEV_HOME/$(ls -d $DEV_HOME/*/ | sed -r "s^$DEV_HOME/(.*)/^\1^g" | fzf --exact)
+	else
+		echo "DEV_HOME not set"
+	fi
+}

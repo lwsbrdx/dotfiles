@@ -1,0 +1,13 @@
+alias ll="ls -la --color=auto"
+
+# OMZ
+alias omzr="omz reload"
+
+# GIT
+alias push="git push"
+alias pull="git pull"
+alias status="git status"
+
+# MISC
+alias fzfc="fzf --exact < <(find . -maxdepth 1 | sed -e 's/.\/\(.*\)/\1/g')"
+alias cdc='cd $(find . -type d -maxdepth 1 | sed -r "s/(\.\/)|(\.)//g" | fzf)' 

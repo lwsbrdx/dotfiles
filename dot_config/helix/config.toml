@@ -1,0 +1,59 @@
+theme = "gruvbox_dark_hard"
+
+[editor]
+line-number = "relative"
+completion-trigger-len = 1
+bufferline = "multiple"
+color-modes = true
+auto-save = true
+true-color = true
+idle-timeout = 0
+cursorline = true
+cursorcolumn = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.statusline]
+left = ["mode", "spacer", "version-control", "spinner"]
+center = ["file-name"]
+right = ["diagnostics", "selections", "position", "file-encoding", "file-type"]
+separator = "│"
+mode.normal = "N"
+mode.insert = "I"
+mode.select = "S"
+
+[editor.file-picker]
+hidden = false
+
+[editor.indent-guides]
+render = true
+
+[keys.normal]
+"S-s" = ":w"
+"S-d" = ["extend_to_line_bounds", "yank", "paste_before"]
+"C-r" = ":config-reload"
+"S-r" = ":reload-all"
+"{" = "jump_backward"
+"}" = "jump_forward"
+"S-esc" = ":buffer-close"
+"S-left" = "goto_previous_buffer"
+"S-right" = "goto_next_buffer"
+"?" = "toggle_comments"
+"S-up" = ["goto_line_end", "extend_line_below", "delete_selection", "move_line_up", "paste_before"]
+"S-down" = ["goto_line_end", "extend_line_below", "delete_selection", "paste_after"]
+
+[keys.select]
+"S-up" = ["goto_line_end", "extend_line_below", "delete_selection", "move_line_up", "paste_before", "select_mode"]
+"S-down" = ["goto_line_end", "extend_line_below", "delete_selection", "paste_after", "select_mode" ]
+"?" = "toggle_comments"
+
+[keys.insert]
+"S-up" = ["goto_line_end", "extend_line_below", "delete_selection", "move_line_up", "paste_before", "select_mode"]
+"S-down" = ["goto_line_end", "extend_line_below", "delete_selection", "paste_after", "select_mode" ]
