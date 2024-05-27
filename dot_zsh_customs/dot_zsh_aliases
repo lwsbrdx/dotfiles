@@ -5,6 +5,7 @@ alias omzr="omz reload"
 
 # GIT
 alias push="git push"
+alias pushf="git push -f"
 alias pull="git pull"
 alias status="git status"
 
