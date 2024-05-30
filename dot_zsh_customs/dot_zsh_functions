@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ### HELIX
 function hxf() {
 	hx $(fzf --exact --preview 'bat --style=numbers --color=always {}')
