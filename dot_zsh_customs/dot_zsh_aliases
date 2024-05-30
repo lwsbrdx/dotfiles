@@ -6,6 +6,7 @@ alias ll="ls -la --color=auto"
 alias omzr="omz reload"
 
 # GIT
+alias lg="lazygit"
 alias push="git push"
 alias pushf="git push -f"
 alias pull="git pull"
