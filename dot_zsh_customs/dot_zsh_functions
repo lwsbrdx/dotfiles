@@ -2,7 +2,11 @@
 
 ### HELIX
 function hxf() {
-	hx $(fzf --exact --preview 'bat --style=numbers --color=always {}')
+	file=$(fzf --exact --preview 'bat --style=numbers --color=always {}')
+	
+	if [[ -n "$file" ]]; then
+		hx $file
+	fi
 }
 
 function cdd() {
