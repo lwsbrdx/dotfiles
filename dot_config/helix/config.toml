@@ -36,18 +36,24 @@ hidden = false
 render = true
 
 [keys.normal]
-"S-s" = ":w"
+d = "delete_selection_noyank"
+"A-d" = "delete_selection"
+c = "change_selection_noyank"
+"A-c" = "change_selection"
 "S-d" = ["extend_to_line_bounds", "yank", "paste_before"]
 "C-r" = ":config-reload"
 "S-r" = ":reload-all"
 "{" = "jump_backward"
 "}" = "jump_forward"
-"S-esc" = ":buffer-close"
 "S-left" = "goto_previous_buffer"
 "S-right" = "goto_next_buffer"
 "?" = "toggle_comments"
 "S-up" = ["goto_line_end", "extend_line_below", "delete_selection", "move_line_up", "paste_before"]
 "S-down" = ["goto_line_end", "extend_line_below", "delete_selection", "paste_after"]
+
+[keys.normal."≠"]
+s = ":w"
+c = ":buffer-close"
 
 [keys.select]
 "S-up" = ["goto_line_end", "extend_line_below", "delete_selection", "move_line_up", "paste_before", "select_mode"]
