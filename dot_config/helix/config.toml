@@ -11,6 +11,9 @@ idle-timeout = 0
 cursorline = true
 cursorcolumn = false
 
+[editor.whitespace]
+render = "all"
+
 [editor.cursor-shape]
 insert = "bar"
 normal = "block"
