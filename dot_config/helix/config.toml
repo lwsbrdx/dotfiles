@@ -1,4 +1,9 @@
-theme = "gruvbox_dark_hard"
+# theme = "dracula"
+# theme = "dracula_at_night"
+# theme = "sonokai"
+# theme = "onedarker"
+theme = "onedark"
+# theme = "doom_acario_dark"
 
 [editor]
 line-number = "relative"
@@ -44,8 +49,6 @@ d = "delete_selection_noyank"
 c = "change_selection_noyank"
 "A-c" = "change_selection"
 "S-d" = ["extend_to_line_bounds", "yank", "paste_before"]
-"C-r" = ":config-reload"
-"S-r" = ":reload-all"
 "{" = "jump_backward"
 "}" = "jump_forward"
 "S-left" = "goto_previous_buffer"
@@ -55,10 +58,13 @@ c = "change_selection_noyank"
 "S-down" = ["goto_line_end", "extend_line_below", "delete_selection", "paste_after"]
 
 [keys.normal."≠"]
+f = ":format"
 s = ":w"
 S = ":wa"
-c = ":buffer-close"
+c = ":bc"
 C = ":bca"
+r = ":config-reload"
+R = ":reload-all"
 
 [keys.select]
 "S-up" = ["goto_line_end", "extend_line_below", "delete_selection", "move_line_up", "paste_before", "select_mode"]
