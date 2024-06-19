@@ -9,3 +9,11 @@ auto-format = true
 [[language]]
 name = "go"
 auto-format = true
+
+[[language]]
+name = "javascript"
+auto-format = true
+
+[[language]]
+name = "typescript"
+auto-format = true
