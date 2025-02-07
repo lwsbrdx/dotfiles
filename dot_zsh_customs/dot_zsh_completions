@@ -1,7 +1,6 @@
 #!/bin/bash
 
 ###-begin-flutter-completion-###
-
 if type complete &>/dev/null; then
   __flutter_completion() {
     local si="$IFS"
@@ -45,3 +44,20 @@ fi
 
 ###-end-flutter-completion-###
 
+### fx completion ###
+if command -v fx &> /dev/null
+then
+  source <(fx --comp zsh)
+fi
+### end fx completion ###
+
+### ngrok completion
+if command -v ngrok &>/dev/null; then
+  eval "$(ngrok completion)"
+fi
+### end ngrok completion
+
+EXERCISM_COMPLETION_FILE_PATH="$ZSH_CUSTOMS_PATH/completions/exercism_autocomplete.sh"
+if [[ -e "$EXERCISM_COMPLETION_FILE_PATH" ]]; then
+  source $EXERCISM_COMPLETION_FILE_PATH
+fi

@@ -15,3 +15,5 @@ alias ll="ls -la --color=auto"
 alias fzfc="fzf --exact < <(find . -maxdepth 1 | sed -e 's/.\/\(.*\)/\1/g')"
 alias cdc='cd $(find . -type d -maxdepth 1 | sed -r "s/(\.\/)|(\.)//g" | fzf)' 
 alias cm='chezmoi'
+alias sail='sh $([ -f sail ] && echo sail || echo vendor/bin/sail)'
+alias nv='nvim'
