@@ -2,8 +2,8 @@
 
 export DEV_HOME=$HOME/dev
 
-if [[ -x "$(command -v hx)" ]]; then
-  export EDITOR=hx
+if [[ -x "$(command -v nvim)" ]]; then
+  export EDITOR=nvim
 else
   export EDITOR=vim
 fi
