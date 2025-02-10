@@ -57,7 +57,11 @@ if command -v ngrok &>/dev/null; then
 fi
 ### end ngrok completion
 
-EXERCISM_COMPLETION_FILE_PATH="$ZSH_CUSTOMS_PATH/completions/exercism_autocomplete.sh"
-if [[ -e "$EXERCISM_COMPLETION_FILE_PATH" ]]; then
-  source $EXERCISM_COMPLETION_FILE_PATH
+if command -v exercism &> /dev/null
+then
+	EXERCISM_COMPLETION_FILE_PATH="$ZSH_CUSTOMS_PATH/completions/exercism_autocomplete.sh"
+	if [[ -e "$EXERCISM_COMPLETION_FILE_PATH" ]]; then
+		source $EXERCISM_COMPLETION_FILE_PATH
+	fi
 fi
+
