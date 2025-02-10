@@ -10,6 +10,7 @@ vim.opt.swapfile = false
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.smartindent = true
+
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -30,5 +31,4 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
-vim.keymap.set("n", "Y", 'Vy')
-
+vim.keymap.set("n", "Y", "Vy")
