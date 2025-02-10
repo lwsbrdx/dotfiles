@@ -29,11 +29,21 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		config = function()
+			local cap = require("cmp_nvim_lsp").default_capabilities()
+
 			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({})
-			lspconfig.gopls.setup({})
-            lspconfig.rust_analyzer.setup({})
-            lspconfig.intelephense.setup({})
+			lspconfig.lua_ls.setup({
+				capabilities = cap,
+			})
+			lspconfig.gopls.setup({
+				capabilities = cap,
+			})
+			lspconfig.rust_analyzer.setup({
+				capabilities = cap,
+			})
+			lspconfig.intelephense.setup({
+				capabilities = cap,
+			})
 
 			vim.keymap.set("n", "H", vim.lsp.buf.hover, {})
 			vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
