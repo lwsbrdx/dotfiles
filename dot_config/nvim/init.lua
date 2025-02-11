@@ -32,3 +32,4 @@ require("lazy").setup("plugins")
 
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 vim.keymap.set("n", "Y", "Vy")
+vim.keymap.set("n", "<leader>t", ":tabnew<CR>")
