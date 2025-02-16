@@ -22,6 +22,7 @@ return {
                     "gopls",
                     "rust_analyzer",
                     "intelephense",
+                    "ts_ls",
                 },
             })
         end,
@@ -44,6 +45,10 @@ return {
             lspconfig.intelephense.setup({
                 capabilities = cap,
             })
+            lspconfig.ts_ls.setup({
+                capabilities = cap
+            })
+
 
             vim.keymap.set("n", "H", vim.lsp.buf.hover, {})
             vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", {})
