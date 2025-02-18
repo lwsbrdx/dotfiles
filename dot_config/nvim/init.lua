@@ -1,5 +1,3 @@
-vim.cmd("language en_US")
-
 vim.g.mapleader = " "
 vim.g.autoformat = true
 

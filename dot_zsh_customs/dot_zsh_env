@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export LANG=en_US.UTF-8
 export DEV_HOME=$HOME/dev
 
 if [[ -x "$(command -v nvim)" ]]; then
