@@ -16,24 +16,33 @@ vim.opt.expandtab = true
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 vim.keymap.set("n", "Y", "Vy")
-vim.keymap.set("n", "<leader>t", ":tabnew<CR>")
+vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { silent = true })
 vim.keymap.set("n", "<C-Right>", "gt")
 vim.keymap.set("n", "<C-Left>", "gT")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<leader>h", ":noh<CR>")
-vim.keymap.set('t', '<ESC>', [[<C-\><C-n>]], { noremap = true })
+vim.keymap.set("n", "<leader>h", ":noh<CR>", { silent = true })
+vim.keymap.set("t", "<ESC>", [[<C-\><C-n>]], { noremap = true })
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    callback = function()
+        vim.lsp.buf.format()
+        vim.schedule(function()
+            vim.api.nvim_buf_set_option(0, "modified", false)
+        end)
+    end,
+})
