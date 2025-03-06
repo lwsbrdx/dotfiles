@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.autoformat = true
 
+vim.o.termguicolors = true
+
 vim.opt.guicursor = ""
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -8,11 +10,12 @@ vim.opt.swapfile = false
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.smartindent = true
-
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.expandtab = true
+vim.opt.laststatus = 3
+vim.opt.showtabline = 2
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
