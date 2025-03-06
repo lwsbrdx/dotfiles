@@ -31,6 +31,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
+vim.cmd.colorscheme("catppuccin")
+
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 vim.keymap.set("n", "Y", "Vy")
 vim.keymap.set("n", "<leader>t", ":tabnew<CR>", { silent = true })
