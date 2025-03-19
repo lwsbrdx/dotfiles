@@ -1,5 +1,11 @@
 #!/bin/bash
 
+function cdd() {
+	if [[ -n "$DEV_HOME" && -d "$DEV_HOME" ]]; then
+		cd $DEV_HOME/$(ls -d $DEV_HOME/*/ | sed -r "s^$DEV_HOME/(.*)/^\1^g" | fzf --exact)
+	fi
+}
+
 ### HELIX
 function hxf() {
 	file=$(fzf --exact --preview 'bat --style=numbers --color=always {}')
@@ -9,8 +15,32 @@ function hxf() {
 	fi
 }
 
-function cdd() {
-	if [[ -n "$DEV_HOME" && -d "$DEV_HOME" ]]; then
-		cd $DEV_HOME/$(ls -d $DEV_HOME/*/ | sed -r "s^$DEV_HOME/(.*)/^\1^g" | fzf --exact)
-	fi
+### NVIM
+function nvf() {
+    file=$(fzf --exact --preview 'bat --style=numbers --color=always {}')
+
+    if [[ -n "$file" ]]; then
+        nv $file
+    fi
+}
+
+function blame() {
+    re='^[0-9]+$'
+
+    if [ "$#" -ne 2 ]; then
+        echo "Illegal number of parameters"
+        return 1
+    fi
+
+    if [[ ! -e $1 ]]; then
+        echo "File $1 does not exists"
+        return 1
+    fi
+
+    if [[ ! $2 =~ $re ]]; then
+        echo "$2 must be an integer"
+        return 1
+    fi
+
+    git blame -L $2,$2 -- $1 | awk -F " " '{ user=substr($2, 2); message="git log --format=%B -n 1 "$1; message |getline message; print $3 " " user " - " message " - " $1 }'
 }
