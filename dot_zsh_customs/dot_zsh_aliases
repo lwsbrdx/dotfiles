@@ -10,6 +10,11 @@ alias pushf="git push -f"
 alias pull="git pull"
 alias status="git status"
 
+# TMUX
+alias tls="tmux ls"
+alias ta="tmux a -t"
+alias tn="tmux new"
+
 # MISC
 alias ll="ls -la --color=auto"
 alias fzfc="fzf --exact < <(find . -maxdepth 1 | sed -e 's/.\/\(.*\)/\1/g')"
