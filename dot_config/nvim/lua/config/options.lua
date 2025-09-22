@@ -16,5 +16,7 @@ vim.opt.termguicolors = true
 
 -- Global Keymaps
 vim.keymap.set("n", "<leader>h", ":nohl<CR>")
+vim.keymap.set("n", "<leader>e", "<Cmd>e .<CR>")
+vim.keymap.set("n", "<leader>x", "<Cmd>Ex<CR>")
 vim.keymap.set("n", "<C-Left>", ":bp<CR>")
 vim.keymap.set("n", "<C-Right>", ":bn<CR>")
