@@ -20,6 +20,7 @@ return {
             vim.keymap.set('n', '<leader>li', builtin.lsp_implementations, { desc = 'LSP implementations' })
             vim.keymap.set('n', '<leader>ld', builtin.lsp_definitions, { desc = 'LSP definitions' })
             vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { desc = "LSP rename symbol" })
+            vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "LSP code actions" })
             vim.keymap.set(
                 'n', '<leader>le',
                 function()
