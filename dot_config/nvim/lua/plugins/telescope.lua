@@ -6,6 +6,14 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         config = function()
+            require('telescope').setup({
+                pickers = {
+                    find_files = {
+                        hidden = true
+                    }
+                }
+            })
+
             local builtin = require('telescope.builtin')
 
             -- Files
@@ -41,7 +49,6 @@ return {
             vim.keymap.set('n', '<leader>vj', builtin.jumplist, { desc = 'Vim jumplist' })
             vim.keymap.set('n', '<leader>vm', builtin.jumplist, { desc = 'Vim marklist' })
             vim.keymap.set('n', '<leader>vk', builtin.keymaps, { desc = 'List of keymaps' })
-
         end
     }
 }
