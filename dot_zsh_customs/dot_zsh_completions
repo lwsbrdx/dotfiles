@@ -15,6 +15,12 @@ then
 fi
 ### end fx completion ###
 
+### fzf completion ###
+if command -v fzf &> /dev/null; then
+    source <(fzf --zsh 2> /dev/null)
+fi
+### end fzf completion ###
+
 ### ngrok completion
 if command -v ngrok &>/dev/null; then
   eval "$(ngrok completion)"
