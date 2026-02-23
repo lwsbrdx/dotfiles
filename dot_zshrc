@@ -64,9 +64,9 @@ if [[ -f $ZSH_CUSTOMS_PATH/.zsh_completions ]]; then
   . $ZSH_CUSTOMS_PATH/.zsh_completions
 fi
 
-if [[ -f $ZSH_CUSTOMS_PATH/.zsh_work ]]; then
-  . $ZSH_CUSTOMS_PATH/.zsh_work
-fi
+for file in $ZSH_CUSTOMS_PATH/.zsh_*; do
+    [[ -f $file ]] && . "$file"
+done
 
 # NVM
 export NVM_DIR="$HOME/.nvm"
