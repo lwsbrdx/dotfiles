@@ -24,13 +24,25 @@ return {
                     title = " Claude-Code ",
                     keymap = "<leader>sc",
                 },
-                todos = {
-                    type = "file",
-                    command = "~/Documents/todos.md",
-                    title = " TODOs ",
-                    keymap = "<leader>st",
-                    filetype = "markdown", -- optional: override auto-detected filetype
+                lazygit = {
+                    type = "terminal",
+                    command = "lazygit",
+                    title = " LazyGit ",
+                    keymap = "<leader>lg",
                 },
+                terminal = {
+                    type = "terminal",
+                    command = "zsh",
+                    title = " Terminal ",
+                    keymap = "<leader>st",
+                },
+                -- todos = {
+                --     type = "file",
+                --     command = "~/Documents/todos.md",
+                --     title = " TODOs ",
+                --     keymap = "<leader>st",
+                --     filetype = "markdown", -- optional: override auto-detected filetype
+                -- },
             },
         })
     end
