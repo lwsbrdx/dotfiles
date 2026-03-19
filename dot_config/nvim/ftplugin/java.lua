@@ -28,7 +28,7 @@ jdtls.start_or_attach(config)
 -- Keymaps Java
 vim.keymap.set("n", "<leader>tm", jdtls.test_nearest_method, { desc = "Test nearest method" })
 vim.keymap.set("n", "<leader>tc", jdtls.test_class, { desc = "Test class" })
-vim.keymap.set("n", "<leader>tr", jdtls.test_nearest_method, { desc = "Re-run last test" })
+vim.keymap.set("n", "<leader>tr", dap.run_last, { desc = "Re-run last test" })
 
 -- Fonction compilation automatique
 local function compile_project()
@@ -43,15 +43,16 @@ local function compile_project()
 
     if cmd then
         print("Compiling project…")
-        local handle = uv.spawn(cmd[1], { args = { unpack(cmd, 2) }, cwd = root }, function(code)
+        local stdout = uv.new_pipe(false)
+        uv.spawn(cmd[1], { args = { unpack(cmd, 2) }, cwd = root, stdio = { nil, stdout, nil } }, function(code)
+            stdout:close()
             if code == 0 then
                 print("Compilation OK")
             else
-                print("Compilation failed with code", code)
+                print("Compilation failed with code " .. code)
             end
         end)
-        -- sortie standard
-        uv.read_start(handle.stdout, function(err, data)
+        uv.read_start(stdout, function(err, data)
             if data then print(data) end
         end)
     end
@@ -67,8 +68,6 @@ vim.defer_fn(function()
         vim.notify("mason-nvim-dap not found", vim.log.levels.ERROR)
         return
     end
-
-    mason_dap.setup({ automatic_setup = true })
 
     local java_adapter_ok, java_adapter = pcall(mason_dap.get_adapter, "java-debug-adapter")
     if java_adapter_ok then

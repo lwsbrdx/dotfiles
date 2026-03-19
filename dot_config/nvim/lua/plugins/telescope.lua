@@ -1,12 +1,25 @@
 return {
     {
         "nvim-telescope/telescope.nvim",
+        cmd = "Telescope",
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons",
         },
         config = function()
             require('telescope').setup({
+                defaults = {
+                    layout_strategy = "vertical",
+                    layout_config = {
+                        vertical = {
+                            prompt_position = "bottom",
+                            preview_height = 0.75,
+                            width = 0.9,
+                            height = 0.95,
+                            mirror = false,  -- preview en haut, résultats en bas
+                        },
+                    },
+                },
                 pickers = {
                     find_files = {
                         hidden = true
@@ -23,32 +36,15 @@ return {
             vim.keymap.set('n', '<leader>fr', builtin.oldfiles, { desc = 'Telescope recent files' })
             vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
-            -- LSP
-            vim.keymap.set('n', '<leader>lh', vim.lsp.buf.hover, { desc = 'LSP hover' })
-            vim.keymap.set('n', '<leader>lr', builtin.lsp_references, { desc = 'LSP references' })
-            vim.keymap.set('n', '<leader>li', builtin.lsp_implementations, { desc = 'LSP implementations' })
-            vim.keymap.set('n', '<leader>ld', builtin.lsp_definitions, { desc = 'LSP definitions' })
-            vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { desc = "LSP rename symbol" })
-            vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "LSP code actions" })
-            vim.keymap.set(
-                'n', '<leader>le',
-                function()
-                    builtin.diagnostics({ bufnr = 0 })
-                end,
-                { desc = 'Lists Diagnostics for current buffer (bufnr=0)' }
-            )
-            vim.keymap.set('n', '<leader>ls', builtin.lsp_document_symbols,
-                { desc = 'Lists LSP document symbols in the current buffer' })
-
             -- Git
             vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Git commits diff view' })
             vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = 'List git branches' })
-            vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Git status' })
+            vim.keymap.set('n', '<leader>gS', builtin.git_status, { desc = 'Git status' })
 
             -- Vim
             vim.keymap.set('n', '<leader>vr', builtin.registers, { desc = 'Vim registers and paste the selected' })
             vim.keymap.set('n', '<leader>vj', builtin.jumplist, { desc = 'Vim jumplist' })
-            vim.keymap.set('n', '<leader>vm', builtin.jumplist, { desc = 'Vim marklist' })
+            vim.keymap.set('n', '<leader>vm', builtin.marks, { desc = 'Vim marklist' })
             vim.keymap.set('n', '<leader>vk', builtin.keymaps, { desc = 'List of keymaps' })
         end
     }

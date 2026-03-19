@@ -1,6 +1,5 @@
 return {
     "salkhalil/summon.nvim",
-    opts = {},
     config = function ()
         require("summon").setup({
             -- Global defaults (apply to all commands unless overridden)

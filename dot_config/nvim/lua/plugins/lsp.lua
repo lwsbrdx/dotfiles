@@ -15,6 +15,10 @@ return {
                 "cssls",
             }
 
+            vim.diagnostic.config({
+                update_in_insert = true,
+            })
+
             -- Configuration spécifique pour emmet_ls
             vim.lsp.config.emmet_ls = {
                 filetypes = {
@@ -41,7 +45,8 @@ return {
                     plugins = {
                         {
                             name = "@vue/typescript-plugin",
-                            location = vim.fn.stdpath("data") .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                            location = vim.fn.stdpath("data") ..
+                                "/mason/packages/vue-language-server/node_modules/@vue/language-server",
                             languages = { "vue" },
                         },
                     },
@@ -69,15 +74,35 @@ return {
             vim.lsp.enable("vue_ls")
 
             -- KeyBindings
-            vim.keymap.set("n", "<leader>lf", function()
-                vim.lsp.buf.format({ async = true })
-            end, { desc = "Format buffer with LSP" })
+            vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ async = true }) end,
+                { desc = "Format buffer with LSP" })
+            vim.keymap.set("n", "<leader>ll", function() vim.diagnostic.open_float() end,
+                { desc = "Diagnostic float" })
+            vim.keymap.set("n", "<leader>lh", vim.lsp.buf.hover, { desc = "LSP hover" })
+            vim.keymap.set("n", "<leader>ln", vim.lsp.buf.rename, { desc = "LSP rename symbol" })
+            vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "LSP code actions" })
+
+            local ok, builtin = pcall(require, "telescope.builtin")
+            if not ok then
+                vim.notify("Telescope non disponible : keymaps LSP limités", vim.log.levels.WARN)
+                return
+            end
+
+            vim.keymap.set("n", "<leader>lr", builtin.lsp_references, { desc = "LSP references" })
+            vim.keymap.set("n", "<leader>li", builtin.lsp_implementations, { desc = "LSP implementations" })
+            vim.keymap.set("n", "<leader>ld", builtin.lsp_definitions, { desc = "LSP definitions" })
+            vim.keymap.set("n", "<leader>le", function()
+                builtin.diagnostics({ bufnr = 0 })
+            end, { desc = "LSP diagnostics (buffer)" })
+            vim.keymap.set("n", "<leader>ls", builtin.lsp_document_symbols,
+                { desc = "LSP document symbols" })
         end,
     },
 
     -- Mason : interface pour installer LSP, DAP et formatters
     {
         "williamboman/mason.nvim",
+        cmd = "Mason",
         config = function()
             require("mason").setup()
         end,

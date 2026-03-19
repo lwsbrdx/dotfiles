@@ -2,6 +2,10 @@ return {
   -- Core DAP
   {
     "mfussenegger/nvim-dap",
+    keys = {
+      "<F5>", "<F10>", "<F11>", "<F12>",
+      "<leader>db", "<leader>dB", "<leader>dr", "<leader>dl",
+    },
     dependencies = {
       "rcarriga/nvim-dap-ui",               -- UI pour le debug
       "nvim-neotest/nvim-nio",

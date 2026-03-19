@@ -1,5 +1,6 @@
 return {
     "akinsho/flutter-tools.nvim",
+    ft = "dart",
     dependencies = {
         "nvim-lua/plenary.nvim",
         "stevearc/dressing.nvim", -- optionnel (UI améliorée)
@@ -16,10 +17,10 @@ return {
                 color = { enabled = true },
                 on_attach = function(_, bufnr)
                     local opts = { buffer = bufnr, silent = true }
-                    vim.keymap.set("n", "<leader>fr", "<cmd>FlutterRun<cr>", opts)
-                    vim.keymap.set("n", "<leader>fq", "<cmd>FlutterQuit<cr>", opts)
-                    vim.keymap.set("n", "<leader>fd", "<cmd>FlutterDevices<cr>", opts)
-                    vim.keymap.set("n", "<leader>fo", "<cmd>FlutterOutlineToggle<cr>", opts)
+                    vim.keymap.set("n", "<leader>Fr", "<cmd>FlutterRun<cr>", opts)
+                    vim.keymap.set("n", "<leader>Fq", "<cmd>FlutterQuit<cr>", opts)
+                    vim.keymap.set("n", "<leader>Fd", "<cmd>FlutterDevices<cr>", opts)
+                    vim.keymap.set("n", "<leader>Fo", "<cmd>FlutterOutlineToggle<cr>", opts)
                 end,
             },
         })
