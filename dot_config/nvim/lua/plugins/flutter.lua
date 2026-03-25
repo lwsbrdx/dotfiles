@@ -16,11 +16,10 @@ return {
             lsp = {
                 color = { enabled = true },
                 on_attach = function(_, bufnr)
-                    local opts = { buffer = bufnr, silent = true }
-                    vim.keymap.set("n", "<leader>Fr", "<cmd>FlutterRun<cr>", opts)
-                    vim.keymap.set("n", "<leader>Fq", "<cmd>FlutterQuit<cr>", opts)
-                    vim.keymap.set("n", "<leader>Fd", "<cmd>FlutterDevices<cr>", opts)
-                    vim.keymap.set("n", "<leader>Fo", "<cmd>FlutterOutlineToggle<cr>", opts)
+                    vim.keymap.set("n", "<leader>Fr", "<cmd>FlutterRun<cr>", { buffer = bufnr, silent = true, desc = "Flutter: lancer l'app" })
+                    vim.keymap.set("n", "<leader>Fq", "<cmd>FlutterQuit<cr>", { buffer = bufnr, silent = true, desc = "Flutter: quitter l'app" })
+                    vim.keymap.set("n", "<leader>Fd", "<cmd>FlutterDevices<cr>", { buffer = bufnr, silent = true, desc = "Flutter: liste des appareils" })
+                    vim.keymap.set("n", "<leader>Fo", "<cmd>FlutterOutlineToggle<cr>", { buffer = bufnr, silent = true, desc = "Flutter: afficher/masquer l'outline" })
                 end,
             },
         })

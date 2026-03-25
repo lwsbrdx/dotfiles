@@ -59,9 +59,25 @@ return {
                 filetypes = { "vue" },
             }
 
+            -- Configuration pour rust_analyzer (affiche les warnings clippy)
+            vim.lsp.config.rust_analyzer = {
+                capabilities = capabilities,
+                settings = {
+                    ["rust-analyzer"] = {
+                        checkOnSave = true,
+                        check = {
+                            command = "clippy",
+                        },
+                        diagnostics = {
+                            enable = true,
+                        },
+                    },
+                },
+            }
+
             -- Setup de chaque serveur avec la nouvelle API
             for _, lsp in ipairs(servers) do
-                if lsp ~= "emmet_ls" then
+                if lsp ~= "emmet_ls" and lsp ~= "rust_analyzer" then
                     vim.lsp.config[lsp] = { capabilities = capabilities }
                 else
                     vim.lsp.config[lsp].capabilities = capabilities
