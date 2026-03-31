@@ -1,6 +1,7 @@
 return {
 	"3rd/image.nvim",
 	ft = { "markdown", "norg", "typst" },
+	event = { "BufReadPre *.png,*.jpg,*.jpeg,*.gif,*.webp,*.avif" },
 	build = false,
 	opts = {
 		backend = "kitty",
@@ -31,7 +32,7 @@ return {
         window_overlap_clear_enabled = false,
         window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "snacks_notif", "scrollview", "scrollview_sign" },
 		editor_only_render_when_focused = false,
-		tmux_show_only_in_active_window = false,
+		tmux_show_only_in_active_window = true,
 		hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" },
 	},
 }
