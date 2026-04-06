@@ -1,0 +1,45 @@
+# Shell & prompt
+brew "antidote"       # zsh plugin manager
+brew "starship"       # prompt
+
+# Terminal multiplexer
+brew "tmux"
+
+# Fuzzy finder + file tools
+brew "fzf"
+brew "bat"            # better cat (used in nvf/hxf previews)
+brew "fd"             # better find (pairs well with fzf)
+
+# Git
+brew "lazygit"
+brew "git-delta"      # better git diffs
+
+# Editors
+brew "neovim"
+brew "helix"
+
+# JSON
+brew "fx"
+
+# Tunneling
+brew "ngrok"
+
+# Coding platforms
+brew "exercism"
+
+# VPN
+brew "wireguard-tools"
+
+# Dotfiles
+brew "chezmoi"
+
+# Languages & runtimes
+brew "nvm"
+brew "go"
+brew "bun"
+cask "openjdk@21"
+
+# Optional quality-of-life
+brew "eza"            # better ls (modern replacement)
+brew "zoxide"         # smarter cd
+brew "gh"             # GitHub CLI
