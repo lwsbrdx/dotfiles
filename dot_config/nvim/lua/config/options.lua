@@ -16,8 +16,7 @@ vim.opt.smartindent = true -- indentation intelligente
 vim.opt.termguicolors = true
 
 -- Global Keymaps
-vim.keymap.set("n", "<leader>h", ":nohl<CR>")
-vim.keymap.set("n", "<leader>e", "<Cmd>e .<CR>")
-vim.keymap.set("n", "<leader>x", "<Cmd>Ex<CR>")
-vim.keymap.set("n", "<C-Left>", ":bp<CR>")
-vim.keymap.set("n", "<C-Right>", ":bn<CR>")
+vim.keymap.set("n", "<leader>h", ":nohl<CR>", { desc = "Effacer la surbrillance de recherche" })
+vim.keymap.set("n", "<leader>e", "<Cmd>e .<CR>", { desc = "Ouvrir le répertoire courant" })
+vim.keymap.set("n", "<C-Left>", ":bp<CR>", { desc = "Buffer précédent" })
+vim.keymap.set("n", "<C-Right>", ":bn<CR>", { desc = "Buffer suivant" })

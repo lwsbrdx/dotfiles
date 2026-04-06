@@ -13,35 +13,54 @@ return {
                 "superhtml",
                 "emmet_ls",
                 "cssls",
+                "vue_ls",
             }
 
             vim.diagnostic.config({
                 update_in_insert = true,
             })
 
-            -- Configuration spécifique pour emmet_ls
-            vim.lsp.config.emmet_ls = {
-                filetypes = {
-                    "html",
-                    "css",
-                    "scss",
-                    "javascript",
-                    "javascriptreact",
-                    "typescript",
-                    "typescriptreact",
-                    "vue",
-                    "svelte",
-                },
-            }
-
             -- Ajouter les capabilities de nvim-cmp
             local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+            -- Setup de chaque serveur avec la nouvelle API
+            for _, lsp in ipairs(servers) do
+                vim.lsp.config[lsp] = vim.lsp.config[lsp] or {}
+                vim.lsp.config[lsp].capabilities = capabilities
+                vim.lsp.enable(lsp)
+            end
+
+            vim.lsp.config.lua_ls.settings = {
+                Lua = {
+                    runtime = { version = 'LuaJIT' },
+                    workspace = {
+                        library = vim.api.nvim_get_runtime_file('', true),
+                        checkThirdParty = false,
+                    },
+                    telemetry = { enable = false },
+                },
+            }
+
+            -- Configuration spécifique pour emmet_ls
+            vim.lsp.config.emmet_ls.filetypes = {
+                "html",
+                "css",
+                "scss",
+                "javascript",
+                "javascriptreact",
+                "typescript",
+                "typescriptreact",
+                "vue",
+                "svelte",
+            }
+
             -- Configuration pour ts_ls (TS/JS + support Vue en arrière-plan)
-            vim.lsp.config.ts_ls = {
+            -- hostInfo doit être explicite pour ne pas être écrasé par les defaults nvim-lspconfig
+            vim.lsp.config("ts_ls", {
                 capabilities = capabilities,
                 filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
                 init_options = {
+                    hostInfo = "neovim",
                     plugins = {
                         {
                             name = "@vue/typescript-plugin",
@@ -51,43 +70,23 @@ return {
                         },
                     },
                 },
-            }
-
-            -- Configuration pour vue_ls (gère Vue + TypeScript dans .vue)
-            vim.lsp.config.vue_ls = {
-                capabilities = capabilities,
-                filetypes = { "vue" },
-            }
+            })
 
             -- Configuration pour rust_analyzer (affiche les warnings clippy)
-            vim.lsp.config.rust_analyzer = {
-                capabilities = capabilities,
-                settings = {
-                    ["rust-analyzer"] = {
-                        checkOnSave = true,
-                        check = {
-                            command = "clippy",
-                        },
-                        diagnostics = {
-                            enable = true,
-                        },
+            vim.lsp.config.rust_analyzer.settings = {
+                ["rust-analyzer"] = {
+                    checkOnSave = true,
+                    check = {
+                        command = "clippy",
+                    },
+                    diagnostics = {
+                        enable = true,
                     },
                 },
             }
 
-            -- Setup de chaque serveur avec la nouvelle API
-            for _, lsp in ipairs(servers) do
-                if lsp ~= "emmet_ls" and lsp ~= "rust_analyzer" then
-                    vim.lsp.config[lsp] = { capabilities = capabilities }
-                else
-                    vim.lsp.config[lsp].capabilities = capabilities
-                end
-                vim.lsp.enable(lsp)
-            end
-
-            -- Activer ts_ls et vue_ls (capabilities déjà configurées plus haut)
+            -- Activer ts_ls uniquement (vue_ls est dans le loop servers)
             vim.lsp.enable("ts_ls")
-            vim.lsp.enable("vue_ls")
 
             -- KeyBindings
             vim.keymap.set("n", "<leader>lf", function() vim.lsp.buf.format({ async = true }) end,
@@ -140,9 +139,14 @@ return {
                     "superhtml",
                     "emmet_ls",
                     "cssls",
-                    -- Pour Vue.js: installer manuellement avec :MasonInstall vue-language-server
+                    "vue-language-server",
                 },
-                automatic_installation = true, -- installe automatiquement si absent
+                automatic_installation = true,
+                handlers = {
+                    -- Empêche mason-lspconfig d'auto-activer vtsls et vuels
+                    vtsls = function() end,
+                    vuels = function() end,
+                },
             })
         end,
     },
