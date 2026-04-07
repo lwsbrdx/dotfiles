@@ -1,4 +1,6 @@
 format = """
+$username\
+$hostname\
 $directory\
 $git_branch\
 $git_status\
@@ -76,3 +78,13 @@ disabled = true
 disabled = true
 [package]
 disabled = true
+
+[username]
+show_always = true
+style_user = "bold yellow"
+format = "[$user]($style)@"
+
+[hostname]
+ssh_only = false
+style = "bold yellow"
+format = "[$hostname]($style) "
