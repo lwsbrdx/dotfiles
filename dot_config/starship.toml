@@ -2,14 +2,17 @@ format = """
 $username\
 $hostname\
 $directory\
-$git_branch\
-$git_status\
 $nodejs\
 $golang\
 $python\
 $bun\
 $cmd_duration\
 $character"""
+
+right_format = """
+$git_branch\
+$git_status\
+"""
 
 [directory]
 style = "bold cyan"
