@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# OMZ
-alias omzr="omz reload"
-
 # GIT
 alias lg="lazygit"
 alias push="git push"

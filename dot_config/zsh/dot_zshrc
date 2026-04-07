@@ -1,10 +1,7 @@
 #################################
 # Personal Settings starts HERE #
 #################################
-export ZSH_CUSTOMS_PATH="$HOME/.zsh_customs"
-if [[ ! -d "$HOME/.zsh_customs" ]]; then
-  export ZSH_CUSTOMS_PATH=$HOME
-fi
+export ZSH_CUSTOMS_PATH="$HOME/.config/zsh/customs"
 
 ###################
 ## PLUGINS
@@ -20,7 +17,7 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}' # case-insensitive
 
 if [[ -f /opt/homebrew/opt/antidote/share/antidote/antidote.zsh ]]; then
   source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
-  antidote load ~/.zsh_plugins.txt
+  antidote load "$ZDOTDIR/plugins.txt"
 fi
 
 ###################
