@@ -1,0 +1,12 @@
+
+# JetBrains Toolbox
+for _jb in "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" \
+           "$HOME/.local/share/JetBrains/Toolbox/scripts"; do
+  [[ -d "$_jb" ]] && { export PATH="$PATH:$_jb"; break; }
+done
+unset _jb
+
+export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
+
+# Created by `pipx` on 2025-04-18 18:47:55
+export PATH="$PATH:$HOME/.local/bin"

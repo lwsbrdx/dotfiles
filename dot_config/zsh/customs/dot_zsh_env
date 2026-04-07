@@ -11,5 +11,12 @@ fi
 export VISUAL="EDITOR"
 
 ## JAVA
-export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
-export PATH="$JAVA_HOME/bin:$PATH"
+for _j in /opt/homebrew/opt/openjdk@21 \
+          /home/linuxbrew/.linuxbrew/opt/openjdk@21 \
+          /usr/lib/jvm/java-21-openjdk-amd64 \
+          /usr/lib/jvm/java-21-openjdk \
+          /usr/lib/jvm/temurin-21; do
+  [[ -d "$_j" ]] && { export JAVA_HOME="$_j"; break; }
+done
+unset _j
+[[ -n "${JAVA_HOME:-}" ]] && export PATH="$JAVA_HOME/bin:$PATH"
