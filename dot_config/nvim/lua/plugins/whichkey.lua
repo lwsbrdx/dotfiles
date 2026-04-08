@@ -19,6 +19,7 @@ return {
         spec = {
             { "<leader>f", group = "Files" },
             { "<leader>l", group = "LSP" },
+            { "<leader>x", group = "Explorer" },
             { "<leader>d", group = "Debug" },
             { "<leader>g", group = "Git" },
             { "<leader>v", group = "Vim" },
