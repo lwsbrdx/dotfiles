@@ -1,5 +1,8 @@
 # Fish-like suggestions
 zsh-users/zsh-autosuggestions
 
+# History search by prefix (up/down arrows)
+zsh-users/zsh-history-substring-search
+
 # Syntax highlighting (must be last)
 zsh-users/zsh-syntax-highlighting

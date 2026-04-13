@@ -26,6 +26,8 @@ unset _antidote
 ## Keybindings
 ###################
 bindkey -e                        # Mode emacs (désactive vi mode)
+bindkey "^[[A"    history-substring-search-up    # ↑ recherche dans l'historique
+bindkey "^[[B"    history-substring-search-down  # ↓ recherche dans l'historique
 bindkey "^[[1;3C" forward-word    # Option+→
 bindkey "^[[1;3D" backward-word   # Option+←
 bindkey "^[[H"    beginning-of-line   # Home
@@ -87,6 +89,9 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH="$PATH:/usr/local/lib"
 export PATH="$HOME/.local/share/solana/install/active_release/bin:$PATH"
 export PATH="$PATH:$HOME/.local/bin"
+if [[ -n "$HOME/.lmstudio/bin/" ]]; then
+    export PATH="$PATH:$HOME/.lmstudio/bin"
+fi
 
 ###################
 ## EVALS
@@ -122,4 +127,12 @@ autoload -Uz compinit && compinit -C
 ## PROMPT
 ###################
 command -v starship &>/dev/null && eval "$(starship init zsh)"
+
+###################
+# COMPLETIONS
+###################
+for _i in $(ls -1 "$ZSH_CUSTOMS_PATH/completions/"); do
+    [[ -r "$ZSH_CUSTOMS_PATH/completions/$_i" ]] && { source "$ZSH_CUSTOMS_PATH/completions/$_i" }
+done
+unset _i
 
