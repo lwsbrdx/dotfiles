@@ -17,6 +17,7 @@ brew "git-delta"      # better git diffs
 # Editors
 brew "neovim"
 brew "helix"
+brew "tree-sitter"     # required by nvim-treesitter (main branch)
 
 # JSON
 brew "fx"
