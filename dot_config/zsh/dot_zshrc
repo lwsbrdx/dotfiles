@@ -39,7 +39,7 @@ bindkey "^[^?"    backward-kill-word  # Option+Delete
 ###################
 ## Custom files
 ###################
-for _zsh_file in .zsh_env .zsh_constants .zsh_aliases .zsh_functions .zsh_completions .zsh_home; do
+for _zsh_file in .zsh_env .zsh_constants .zsh_aliases .zsh_functions .zsh_completions .zsh_home .zsh_work; do
   [[ -f "$ZSH_CUSTOMS_PATH/$_zsh_file" ]] && source "$ZSH_CUSTOMS_PATH/$_zsh_file"
 done
 unset _zsh_file
@@ -47,22 +47,14 @@ unset _zsh_file
 ###################
 ## Tools
 ###################
-# NVM — lazy-load (ne charge qu'au premier appel)
+# NVM
 export NVM_DIR="$HOME/.nvm"
-_load_nvm() {
-  unset -f nvm node npm npx yarn _load_nvm
-  local _s
-  for _s in "/opt/homebrew/opt/nvm/nvm.sh" \
+for _nvm in "/opt/homebrew/opt/nvm/nvm.sh" \
             "/home/linuxbrew/.linuxbrew/opt/nvm/nvm.sh" \
             "$NVM_DIR/nvm.sh"; do
-    [[ -s "$_s" ]] && { \. "$_s"; break; }
-  done
-}
-nvm()  { _load_nvm; nvm  "$@"; }
-node() { _load_nvm; node "$@"; }
-npm()  { _load_nvm; npm  "$@"; }
-npx()  { _load_nvm; npx  "$@"; }
-yarn() { _load_nvm; yarn "$@"; }
+  [[ -s "$_nvm" ]] && { \. "$_nvm"; break; }
+done
+unset _nvm
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
