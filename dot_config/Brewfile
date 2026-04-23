@@ -16,14 +16,13 @@ brew "git-delta"      # better git diffs
 
 # Editors
 brew "neovim"
-brew "helix"
 brew "tree-sitter"     # required by nvim-treesitter (main branch)
 
 # JSON
 brew "fx"
 
 # Tunneling
-brew "ngrok"
+cask "ngrok"
 
 # Coding platforms
 brew "exercism"
@@ -37,8 +36,9 @@ brew "chezmoi"
 # Languages & runtimes
 brew "nvm"
 brew "go"
-brew "bun"
-cask "openjdk@21"
+tap "oven-sh/bun"
+brew "oven-sh/bun/bun"
+brew "openjdk@21"
 
 # Optional quality-of-life
 brew "eza"            # better ls (modern replacement)
