@@ -26,6 +26,7 @@ return {
             { "<leader>s", group = "Summon" },
             { "<leader>F", group = "Flutter" },
             { "<leader>t", group = "Test (Java)" },
+            { "<leader>w", group = "Wayfinder" },
             { "]",         group = "Next" },
             { "[",         group = "Prev" },
         },
