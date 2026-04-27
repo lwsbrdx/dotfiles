@@ -128,3 +128,8 @@ for _i in $(ls -1 "$ZSH_CUSTOMS_PATH/completions/"); do
 done
 unset _i
 
+###################
+# KITTY !!!
+###################
+unalias ssh 2>/dev/null
+
