@@ -4,7 +4,7 @@ vim.g.editorconfig = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 3
 
 -- Indentation : 4 espaces
 vim.opt.tabstop = 4       -- largeur d’une tabulation
