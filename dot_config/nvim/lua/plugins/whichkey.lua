@@ -24,6 +24,7 @@ return {
             { "<leader>g", group = "Git" },
             { "<leader>v", group = "Vim" },
             { "<leader>s", group = "Summon" },
+            { "<leader>r", group = "Rust" },
             { "<leader>F", group = "Flutter" },
             { "<leader>t", group = "Test (Java)" },
             { "<leader>w", group = "Wayfinder" },

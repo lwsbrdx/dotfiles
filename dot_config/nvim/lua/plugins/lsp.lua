@@ -54,22 +54,6 @@ return {
                 cmd = { mason_bin .. "/vue-language-server", "--stdio" },
             })
 
-            -- Configuration spécifique rust_analyzer
-            vim.lsp.config("rust_analyzer", {
-                capabilities = capabilities,
-                settings = {
-                    ["rust-analyzer"] = {
-                        checkOnSave = true,
-                        check = {
-                            command = "clippy",
-                        },
-                        diagnostics = {
-                            enable = true,
-                        },
-                    },
-                },
-            })
-
             -- Configuration spécifique emmet_ls
             vim.lsp.config("emmet_ls", {
                 capabilities = capabilities,
@@ -89,7 +73,7 @@ return {
             end
 
             -- Enable les serveurs déjà configurés spécifiquement
-            for _, server in ipairs({ "lua_ls", "ts_ls", "vue_ls", "rust_analyzer", "emmet_ls" }) do
+            for _, server in ipairs({ "lua_ls", "ts_ls", "vue_ls", "emmet_ls" }) do
                 vim.lsp.enable(server)
             end
 
@@ -139,7 +123,6 @@ return {
                     "ts_ls",
                     "pyright",
                     "gopls",
-                    "rust_analyzer",
                     "intelephense",
                     "emmet_ls",
                     "cssls",
