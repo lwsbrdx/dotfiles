@@ -3,7 +3,7 @@ return {
         "rebelot/kanagawa.nvim",
         lazy = false,
         opts = {
-            transparent = false,
+            transparent = true,
             terminal_colors = true,
         },
         config = function(_, opts)
