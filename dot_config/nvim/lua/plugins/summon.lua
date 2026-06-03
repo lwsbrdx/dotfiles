@@ -6,7 +6,7 @@ return {
             width = 0.85,
             height = 0.85,
             border = "rounded",
-            close_keymap = "<Esc><Esc>",
+            close_keymap = "<C-q>",
             highlights = {
                 float = { bg = "#282828" },
                 border = { fg = "#d79921", bg = "#282828" },
