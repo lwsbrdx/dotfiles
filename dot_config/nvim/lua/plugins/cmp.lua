@@ -29,6 +29,9 @@ return {
           end, { "i", "s" }),
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
         },
+        enabled = function()
+          return not vim.tbl_contains({ "AgenticInput" }, vim.bo.filetype)
+        end,
         sources = {
           { name = "nvim_lsp" },
           { name = "buffer" },
