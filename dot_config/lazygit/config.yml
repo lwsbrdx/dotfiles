@@ -5,13 +5,13 @@ os:
   # nouvelle instance Neovim classique.
   edit: |
     if [ -n "$NVIM" ]; then
-      nvim --server "$NVIM" --remote-send "<C-\\><C-n>:e {{filename}}<CR>"
+      nvim --server "$NVIM" --remote-send "<C-\\><C-n>:LazygitEdit {{filename}}<CR>"
     else
       nvim "{{filename}}"
     fi
   editAtLine: |
     if [ -n "$NVIM" ]; then
-      nvim --server "$NVIM" --remote-send "<C-\\><C-n>:e +{{line}} {{filename}}<CR>"
+      nvim --server "$NVIM" --remote-send "<C-\\><C-n>:LazygitEdit +{{line}} {{filename}}<CR>"
     else
       nvim +{{line}} "{{filename}}"
     fi
