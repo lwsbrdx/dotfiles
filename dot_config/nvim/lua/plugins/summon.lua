@@ -23,12 +23,6 @@ return {
                     title = " Claude-Code ",
                     keymap = "<leader>sc",
                 },
-                lazygit = {
-                    type = "terminal",
-                    command = "lazygit",
-                    title = " LazyGit ",
-                    keymap = "<leader>lg",
-                },
                 terminal = {
                     type = "terminal",
                     command = "zsh",

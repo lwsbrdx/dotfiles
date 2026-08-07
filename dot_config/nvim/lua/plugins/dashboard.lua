@@ -9,7 +9,7 @@ return {
         event = "VimEnter",
         dependencies = { "amansingh-afk/milli.nvim" },
         opts = function()
-            local splash = require("milli").load({ splash = "shadertwo" })
+            local splash = require("milli").load({ splash = "fire" })
             local version = vim.version()
             local version_str = string.format("  v%d.%d.%d", version.major, version.minor, version.patch)
             local date_str = "  " .. os.date("%A %d %B %Y")
@@ -62,7 +62,7 @@ return {
         end,
         config = function(_, opts)
             require("dashboard").setup(opts)
-            require("milli").dashboard({ splash = "shadertwo", loop = true })
+            require("milli").dashboard({ splash = "fire", loop = true })
         end,
     },
 }

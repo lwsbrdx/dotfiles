@@ -1,0 +1,20 @@
+os:
+  # Si lazygit est lancé depuis un :terminal de Neovim, la variable $NVIM
+  # pointe vers le socket de cette instance : on y renvoie l'édition.
+  # Sinon (lazygit lancé depuis un terminal "normal"), on ouvre une
+  # nouvelle instance Neovim classique.
+  edit: |
+    if [ -n "$NVIM" ]; then
+      nvim --server "$NVIM" --remote-send "<C-\\><C-n>:e {{filename}}<CR>"
+    else
+      nvim "{{filename}}"
+    fi
+  editAtLine: |
+    if [ -n "$NVIM" ]; then
+      nvim --server "$NVIM" --remote-send "<C-\\><C-n>:e +{{line}} {{filename}}<CR>"
+    else
+      nvim +{{line}} "{{filename}}"
+    fi
+  # Doit bloquer jusqu'à la fermeture du fichier (rebase interactif, etc.) :
+  # on ouvre toujours une instance Neovim dédiée pour garantir ce blocage.
+  editAtLineAndWait: nvim +{{line}} "{{filename}}"

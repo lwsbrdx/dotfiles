@@ -2,6 +2,7 @@
 # Personal Settings starts HERE #
 #################################
 export ZSH_CUSTOMS_PATH="$HOME/.config/zsh/customs"
+export XDG_CONFIG_HOME="$HOME/.config"
 
 ###################
 ## PLUGINS
