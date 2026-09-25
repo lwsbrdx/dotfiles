@@ -16,6 +16,9 @@ return {
         -- dossier de config par défaut de l'OS (Application Support sur macOS).
         vim.g.lazygit_use_custom_config_file_path = 1
         vim.g.lazygit_config_file_path = vim.fn.expand("~/.config/lazygit/config.yml")
+        vim.g.lazygit_on_exit_callback = function ()
+            vim.cmd('stopinsert')
+        end
 
         -- Appelée par ~/.config/lazygit/config.yml (os.edit / os.editAtLine)
         -- via `nvim --server $NVIM --remote-send`. Ferme la fenêtre flottante
