@@ -146,6 +146,8 @@ return {
                     "vue_ls",
                     "clangd",
                 },
+                -- rust_analyzer est géré par rustaceanvim
+                automatic_enable = { exclude = { "rust_analyzer" } },
             })
         end,
     },
