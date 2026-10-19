@@ -65,6 +65,23 @@ return {
                 },
             })
 
+            -- Configuration spécifique clangd (C / C++ / Objective-C)
+            vim.lsp.config("clangd", {
+                capabilities = capabilities,
+                cmd = {
+                    "clangd",
+                    "--background-index",
+                    "--clang-tidy",
+                    "--header-insertion=iwyu",
+                    "--completion-style=detailed",
+                    "--function-arg-placeholders=true",
+                },
+                on_attach = function(_, bufnr)
+                    vim.keymap.set("n", "<leader>lo", "<cmd>LspClangdSwitchSourceHeader<cr>",
+                        { buffer = bufnr, desc = "Switch source/header (C/C++)" })
+                end,
+            })
+
             -- Setup des serveurs sans config spécifique
             local simple_servers = { "pyright", "gopls", "intelephense", "superhtml", "cssls" }
             for _, server in ipairs(simple_servers) do
@@ -73,7 +90,7 @@ return {
             end
 
             -- Enable les serveurs déjà configurés spécifiquement
-            for _, server in ipairs({ "lua_ls", "ts_ls", "vue_ls", "emmet_ls" }) do
+            for _, server in ipairs({ "lua_ls", "ts_ls", "vue_ls", "emmet_ls", "clangd" }) do
                 vim.lsp.enable(server)
             end
 
@@ -127,6 +144,7 @@ return {
                     "emmet_ls",
                     "cssls",
                     "vue_ls",
+                    "clangd",
                 },
             })
         end,
